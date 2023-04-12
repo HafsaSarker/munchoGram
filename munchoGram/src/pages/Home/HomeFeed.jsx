@@ -1,4 +1,5 @@
 import './HomeFeed.css'
+import { Link } from "react-router-dom";
 import Card from '../../components/Card/Card'
 
 export default function HomeFeed(){
@@ -11,9 +12,13 @@ export default function HomeFeed(){
            </div>
 
            <div className="card-container">
-                <Card />
+                <Link to='viewPost'>
+                    <Card />
+                </Link>
 
-                <Card />
+                <Link to='viewPost'>
+                    <Card />
+                </Link>
             </div>
 
         </div>

@@ -1,4 +1,5 @@
 import './Navbar.css'
+import { Link } from "react-router-dom";
 
 export default function Navbar(){
     return (
@@ -6,8 +7,13 @@ export default function Navbar(){
             <h1>munchoGram</h1>
             <input type='text' placeholder='search' />
             <ul>
-                <li>Home</li>
-                <li>Create New Post</li>
+                <Link to='/'>
+                    <li>Home</li>
+                </Link>
+                <Link to='/createPost'>
+                    <li>Create New Post</li>
+                </Link>
+                
             </ul>
         </nav>
     )

@@ -36,3 +36,7 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.card-container > a {
+    color: black;
+}
