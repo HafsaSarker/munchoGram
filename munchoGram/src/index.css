@@ -21,12 +21,15 @@ a {
 }
 
 button{
-    padding: 8px 15px;
-    border-radius: 8px;
-    background-color: hsl(20, 80%, 60%);
-    border: none;
-    color: #fff;
+  padding: 8px 15px;
+  border-radius: 8px;
+  background-color: hsl(20, 80%, 60%);
+  border: none;
+  color: #fff;
+  transition: all .3s;
+  cursor: pointer;
 }
+
 button:hover {
-  
+  background-color: hsl(20, 76%, 59%);
 }
