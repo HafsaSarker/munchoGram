@@ -1,3 +1,9 @@
 .App {
   height: 100vh;
 }
+.icon{
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 8px;
+  color: rgb(87, 87, 87);
+}

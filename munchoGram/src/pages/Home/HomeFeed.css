@@ -25,16 +25,13 @@
     cursor: pointer;
 }
 
-.filter-btn:active {
-    background-color: hsl(20, 73%, 51%);
+.filter-btn:focus {
+    background-color: hsl(20, 80%, 43%);
 }
 
 .card-container {
     padding: 10px 40px;
     width: 100%;
-}
-
-.card-container{
     display: flex;
     flex-direction: column;
     gap: 20px;

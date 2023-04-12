@@ -6,8 +6,8 @@ export default function HomeFeed(){
         <div className="home-feed">
            <div className="sort">
             <p>Order by: </p>
-            <p className='filter-btn'>Newest</p>
-            <p className='filter-btn'>Most Popular</p>
+            <button className='filter-btn'>Newest</button>
+            <button className='filter-btn'>Most Popular</button>
            </div>
 
            <div className="card-container">
