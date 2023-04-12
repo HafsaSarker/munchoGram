@@ -6,10 +6,7 @@
   font-family: Torus,Inter,"Helvetica Neue",Tahoma,Arial,"Hiragino Kaku Gothic ProN",Meiryo,"Microsoft YaHei","Apple SD Gothic Neo",sans-serif;
 }
 
-input{
-  cursor: pointer;
-}
-
+textarea:focus,
 input:focus {
   outline: none;
 }
@@ -23,8 +20,12 @@ a {
   text-decoration: none;
 }
 
-button {
-  
+button{
+    padding: 8px 15px;
+    border-radius: 8px;
+    background-color: hsl(20, 80%, 60%);
+    border: none;
+    color: #fff;
 }
 button:hover {
   
