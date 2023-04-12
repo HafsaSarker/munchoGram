@@ -1,0 +1,41 @@
+.home-feed {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 80%;
+}
+
+.sort {
+    width: 100%;
+    margin: 25px;
+    display: flex; 
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-btn{
+    padding: 4px 6px;
+    background-color: hsl(20, 85%, 55%);
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.filter-btn:active {
+    background-color: hsl(20, 73%, 51%);
+}
+
+.card-container {
+    padding: 10px 40px;
+    width: 100%;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
