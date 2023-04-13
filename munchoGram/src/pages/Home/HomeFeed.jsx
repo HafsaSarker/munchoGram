@@ -1,18 +1,20 @@
 import './HomeFeed.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import Card from '../../components/Card/Card';
 import { supabase } from '../../Client';
 
 export default function HomeFeed({allPosts, setAllPosts}){
+    const[sort, setSort] = useState("created_at");
 
+    // console.log(sort)
     //fetch all posts
     useEffect(() => {
         const fetchPosts = async () => {
             const {data} = await supabase
             .from('munchies')
             .select()
-            .order('created_at', { ascending: true })
+            .order(sort, { ascending: false });
             
             setAllPosts(data);
         }
@@ -23,8 +25,8 @@ export default function HomeFeed({allPosts, setAllPosts}){
         <div className="home-feed">
            <div className="sort">
             <p>Order by: </p>
-            <button className='filter-btn'>Newest</button>
-            <button className='filter-btn'>Most Popular</button>
+            <button className='filter-btn' value="created_at" onClick={(e) => setSort(e.target.value)}>Newest</button>
+            <button className='filter-btn' value="upvotes" onClick={(e) => setSort(e.target.value)}>Most Popular</button>
            </div>
 
            <div className="card-container">
