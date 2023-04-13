@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { supabase } from '../../Client';
 import './CreatePost.css'
 
 export default function CreatePost(){
@@ -14,10 +15,19 @@ export default function CreatePost(){
         }));
     }
 
-    const createPost = (e) => {
+    const createPost = async (e) => {
         e.preventDefault();
 
-        console.log(newPost);
+        await supabase
+            .from('munchies')
+            .insert({
+                title: newPost.title,
+                content: newPost.content,
+                imgUrl: newPost.url
+            })
+            .select();
+        alert('Post created!');        
+        window.location='/';
     }
     return (
         <div className="create-post">
