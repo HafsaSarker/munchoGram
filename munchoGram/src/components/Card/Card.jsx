@@ -1,13 +1,16 @@
 import './Card.css'
+import moment from 'moment';
 
-export default function Card() {
+export default function Card({created,title, upvotes}) {
+    const createdAgo = moment(new Date(created)).fromNow();
+
     return (
         <div className="card">
-            <p>Posted 20 hours ago</p>
+            <p>Posted {createdAgo}</p>
 
-            <h4>What is your favorite Korean food? </h4>
+            <h4>{title}</h4>
 
-            <p>3 upvotes</p>
+            <p>{upvotes} upvotes</p>
         </div>
     )
 }
