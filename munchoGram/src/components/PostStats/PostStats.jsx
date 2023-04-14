@@ -3,8 +3,17 @@ import { supabase } from '../../Client';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { MdOutlineEdit, MdDeleteOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { useState } from 'react';
 
 export default function PostStats({upvotes, id, post_key}) {
+    const [likes, setLikes] = useState(0);
+    const [liked, setLiked] = useState(false);
+
+    const updateLikes = () =>{
+        setLiked(true);
+        setLikes(prev => prev+1);
+    }
+
     const handleDelete = () => {
         let user_key = prompt('Enter secret key to delete your post')
         
@@ -29,7 +38,14 @@ export default function PostStats({upvotes, id, post_key}) {
 
     return (
         <div className="post-stats">
-            <p className='upvotes'><span className='icon'><AiOutlineHeart/></span>{upvotes}</p>
+            <p className='upvotes'>
+                <span 
+                    className='icon'
+                    onClick={updateLikes}
+                >
+                    {liked ? <AiFillHeart/> :  <AiOutlineHeart/>}
+                </span>{likes}
+            </p>
 
             <div className="update-icons">
                 <Link to={'/editPost/' + id}>
