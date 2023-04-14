@@ -10,6 +10,8 @@ import ReadPost from './pages/Read/ReadPost';
 function App() {
   const [allPosts, setAllPosts] = useState(null);
 
+  //console.log(allPosts)
+
   return (
     <div className="App">
       <Routes>
@@ -17,7 +19,7 @@ function App() {
           <Route index element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts}/>}/>
           <Route path='/createPost' element={<CreatePost />}/>
           <Route path='/editPost' element={<UpdatePost />}/>
-          <Route path='viewPost' element={<ReadPost />}/>
+          <Route path='/viewPost/:id' element={<ReadPost allPosts={allPosts}/>}/>
         </Route>
       </Routes>
     </div>

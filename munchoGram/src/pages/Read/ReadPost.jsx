@@ -1,10 +1,17 @@
 import './ReadPost.css'
 import { BsArrowReturnRight } from 'react-icons/bs'
+import { supabase } from '../../Client'
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { MdOutlineEdit, MdDeleteOutline } from 'react-icons/md'
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
-export default function ReadPost(){
+export default function ReadPost({allPosts}){
+    // let {id} = useParams();
+    // let idNum = parseInt(id);
+    console.log(allPosts)
+    // const getPost = allPosts.map((item) => console.log(item) );
+
     return (
         <div className="view-post">
            <div className="post-container">
