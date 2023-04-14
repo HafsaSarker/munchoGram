@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './UpdatePost.css'
+import { supabase } from '../../Client';
 import { useParams } from 'react-router-dom';
 
 export default function UpdatePost({allPosts}){ 
@@ -9,7 +10,7 @@ export default function UpdatePost({allPosts}){
     const getPost = allPosts.filter((item) => item.id === idNum )[0];
 
     const [editedPost, setEditedPost] = useState(getPost);
-    // console.log(getPost)
+
     const handleChange = (e) => {
         setEditedPost((prev) => ({
             ...prev,
@@ -18,9 +19,20 @@ export default function UpdatePost({allPosts}){
         console.log(e.target.value)
     }
 
-    const updatePost = (e) => {
+    const updatePost = async(e) => {
         e.preventDefault();
-        console.log(editedPost)
+        
+        await supabase
+            .from('munchies')
+            .update({
+                title: editedPost.title,
+                content: editedPost.content,
+                imgUrl: editedPost.imgUrl
+            })
+            .eq('id', id);
+        
+        alert('Successfully updated :D');
+        window.location = "/";
     }
 
     return (

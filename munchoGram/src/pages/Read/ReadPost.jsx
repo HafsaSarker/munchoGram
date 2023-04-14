@@ -26,7 +26,7 @@ export default function ReadPost({allPosts}){
      
                      { getPost.imgUrl ? 
                      (
-                         <img className='post-img' src='https://stellanspice.com/wp-content/uploads/2022/02/IMG_4291-1.jpeg'/>
+                         <img className='post-img' src={getPost.imgUrl}/>
                      )
                      :
                      null }

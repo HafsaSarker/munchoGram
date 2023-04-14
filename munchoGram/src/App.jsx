@@ -10,8 +10,6 @@ import ReadPost from './pages/Read/ReadPost';
 function App() {
   const [allPosts, setAllPosts] = useState(null);
 
-  //console.log(allPosts)
-
   return (
     <div className="App">
       <Routes>
