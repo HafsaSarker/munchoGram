@@ -1,4 +1,5 @@
 import './ReadPost.css'
+import { supabase } from '../../Client';
 import { BsArrowReturnRight } from 'react-icons/bs'
 import moment from 'moment';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
@@ -15,8 +16,25 @@ export default function ReadPost({allPosts}){
     const createdAgo = moment(new Date(getPost.created_at)).fromNow();
 
     const handleDelete = () => {
-        const userKey = prompt('Enter your secret key to delete post');
-        console.log(userKey)
+        let user_key = prompt('Enter secret key to delete your post')
+        
+        while(user_key !== getPost.user_key)
+        {
+            user_key = prompt('Wrong key, try again');
+        }
+
+        if(user_key === getPost.user_key){
+            deletePost();
+        }
+    }
+
+    const deletePost = async() => {
+        await supabase
+            .from('munchies')
+            .delete()
+            .eq('id', id);
+        alert('Post deleted!');
+        window.location='/';
     }
 
     return (
