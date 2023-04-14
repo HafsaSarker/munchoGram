@@ -19,15 +19,28 @@ export default function UpdatePost({allPosts}){
         console.log(e.target.value)
     }
 
-    const updatePost = async(e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
+
+        let user_key = prompt('Enter secret key to update your post')
         
+        while(user_key !== editedPost.user_key)
+        {
+            user_key = prompt('Wrong key, try again');
+        }
+
+        if(user_key === editedPost.user_key){
+            updatePost(e);
+        }
+    }
+
+    const updatePost = async(e) => {
         await supabase
             .from('munchies')
             .update({
                 title: editedPost.title,
                 content: editedPost.content,
-                imgUrl: editedPost.imgUrl
+                imgUrl: editedPost.imgUrl,
             })
             .eq('id', id);
         
@@ -41,7 +54,7 @@ export default function UpdatePost({allPosts}){
             { editedPost && 
                 <form 
                 className='update-post-form'
-                onSubmit={updatePost}
+                onSubmit={handleSubmit}
                 >
                     <input 
                         type="text" placeholder='Title'

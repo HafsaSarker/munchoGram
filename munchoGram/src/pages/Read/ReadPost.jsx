@@ -14,11 +14,15 @@ export default function ReadPost({allPosts}){
 
     const createdAgo = moment(new Date(getPost.created_at)).fromNow();
 
+    const handleDelete = () => {
+        const userKey = prompt('Enter your secret key to delete post');
+        console.log(userKey)
+    }
+
     return (
         <>
             { getPost && 
                 <div className="view-post">
-            
                 <div className="post-container">
                      <p>Posted {createdAgo}</p>
                      <h4>{getPost.title} </h4>
@@ -40,7 +44,7 @@ export default function ReadPost({allPosts}){
                                  </span>
                              </Link>
      
-                             <span className="icon"><MdDeleteOutline/></span>
+                             <span className="icon" onClick={handleDelete}><MdDeleteOutline/></span>
                          </div>
                      </div>
                      <div className="comments-container">

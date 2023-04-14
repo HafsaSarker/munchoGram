@@ -6,7 +6,8 @@ export default function CreatePost(){
     const [newPost, setNewPost] = useState({
         title: "",
         content: null,
-        url: null
+        url: null,
+        user_key: null
     });
     const handleChange = (e) => {
         setNewPost((prev) => ({
@@ -23,7 +24,8 @@ export default function CreatePost(){
             .insert({
                 title: newPost.title,
                 content: newPost.content,
-                imgUrl: newPost.url
+                imgUrl: newPost.url,
+                user_key: newPost.user_key
             })
             .select();
         alert('Post created!');        
@@ -50,7 +52,14 @@ export default function CreatePost(){
                     placeholder='Image URL (Optional)' 
                     name='url'
                     onChange={handleChange}
-                    />
+                />
+                <input 
+                    type='text' 
+                    placeholder='Secret key' 
+                    name='user_key'
+                    onChange={handleChange}
+                    required
+                />
                 <button>Create</button>
             </form>
         </div>
