@@ -1,11 +1,8 @@
 import './ReadPost.css'
-import { supabase } from '../../Client';
 import { BsArrowReturnRight } from 'react-icons/bs'
 import moment from 'moment';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
-import { MdOutlineEdit, MdDeleteOutline } from 'react-icons/md'
+import PostStats from '../../components/PostStats/PostStats';
 import { useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom'
 
 export default function ReadPost({allPosts}){
     let {id} = useParams();
@@ -15,28 +12,7 @@ export default function ReadPost({allPosts}){
 
     const createdAgo = moment(new Date(getPost.created_at)).fromNow();
 
-    const handleDelete = () => {
-        let user_key = prompt('Enter secret key to delete your post')
-        
-        while(user_key !== getPost.user_key)
-        {
-            user_key = prompt('Wrong key, try again');
-        }
-
-        if(user_key === getPost.user_key){
-            deletePost();
-        }
-    }
-
-    const deletePost = async() => {
-        await supabase
-            .from('munchies')
-            .delete()
-            .eq('id', id);
-        alert('Post deleted!');
-        window.location='/';
-    }
-
+    
     return (
         <>
             { getPost && 
@@ -52,19 +28,11 @@ export default function ReadPost({allPosts}){
                      )
                      :
                      null }
-                     
-                     <div className="post-stats">
-                         <p className='upvotes'><span className='icon'><AiOutlineHeart/></span>{getPost.upvotes}</p>
-                         <div className="update-icons">
-                             <Link to={'/editPost/' + id}>
-                                 <span className="icon">
-                                     <MdOutlineEdit/>
-                                 </span>
-                             </Link>
-     
-                             <span className="icon" onClick={handleDelete}><MdDeleteOutline/></span>
-                         </div>
-                     </div>
+                     <PostStats 
+                        upvotes={getPost.upvotes}
+                        id={id}
+                        post_key={getPost.user_key}
+                     />
                      <div className="comments-container">
                          <p>
                              <span className='icon'>
