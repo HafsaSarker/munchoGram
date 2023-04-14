@@ -1,6 +1,6 @@
 import './UpdatePost.css'
 
-export default function UpdatePost(){
+export default function UpdatePost({allPosts}){
     return (
         <div className="update-post">
             <h3>Edit Post</h3>

@@ -18,7 +18,7 @@ function App() {
         <Route path='/' element={<Layout />}>
           <Route index element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts}/>}/>
           <Route path='/createPost' element={<CreatePost />}/>
-          <Route path='/editPost' element={<UpdatePost />}/>
+          <Route path='/editPost/:id' element={<UpdatePost allPosts={allPosts} />}/>
           <Route path='/viewPost/:id' element={<ReadPost allPosts={allPosts}/>}/>
         </Route>
       </Routes>

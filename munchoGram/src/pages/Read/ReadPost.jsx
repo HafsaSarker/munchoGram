@@ -1,28 +1,37 @@
 import './ReadPost.css'
 import { BsArrowReturnRight } from 'react-icons/bs'
-import { supabase } from '../../Client'
+import moment from 'moment';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { MdOutlineEdit, MdDeleteOutline } from 'react-icons/md'
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 
 export default function ReadPost({allPosts}){
-    // let {id} = useParams();
-    // let idNum = parseInt(id);
-    console.log(allPosts)
-    // const getPost = allPosts.map((item) => console.log(item) );
+    let {id} = useParams();
+    let idNum = parseInt(id);
 
+    const getPost = allPosts.filter((item) => item.id === idNum )[0];
+
+    const createdAgo = moment(new Date(getPost.created_at)).fromNow();
+    
     return (
         <div className="view-post">
            <div className="post-container">
-                <p>Posted 20 hours ago</p>
-                <h4>What is your favorite Korean food? </h4>
-                <p>Mine is tteokbokki! The chewy rice cakes never gets old xD</p>
-                <img className='post-img' src='https://stellanspice.com/wp-content/uploads/2022/02/IMG_4291-1.jpeg'/>
+                <p>Posted {createdAgo}</p>
+                <h4>{getPost.title} </h4>
+                <p>{getPost.content}</p>
+
+                { getPost.imgUrl ? 
+                (
+                    <img className='post-img' src='https://stellanspice.com/wp-content/uploads/2022/02/IMG_4291-1.jpeg'/>
+                )
+                :
+                null }
+                
                 <div className="post-stats">
-                    <p className='upvotes'><span className='icon'><AiOutlineHeart/></span>3</p>
+                    <p className='upvotes'><span className='icon'><AiOutlineHeart/></span>{getPost.upvotes}</p>
                     <div className="update-icons">
-                        <Link to='/editPost'>
+                        <Link to={'/editPost/' + id}>
                             <span className="icon">
                                 <MdOutlineEdit/>
                             </span>
