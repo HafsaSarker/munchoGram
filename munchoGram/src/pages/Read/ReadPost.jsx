@@ -13,50 +13,57 @@ export default function ReadPost({allPosts}){
     const getPost = allPosts.filter((item) => item.id === idNum )[0];
 
     const createdAgo = moment(new Date(getPost.created_at)).fromNow();
-    
+
     return (
-        <div className="view-post">
-           <div className="post-container">
-                <p>Posted {createdAgo}</p>
-                <h4>{getPost.title} </h4>
-                <p>{getPost.content}</p>
-
-                { getPost.imgUrl ? 
-                (
-                    <img className='post-img' src='https://stellanspice.com/wp-content/uploads/2022/02/IMG_4291-1.jpeg'/>
-                )
-                :
-                null }
-                
-                <div className="post-stats">
-                    <p className='upvotes'><span className='icon'><AiOutlineHeart/></span>{getPost.upvotes}</p>
-                    <div className="update-icons">
-                        <Link to={'/editPost/' + id}>
-                            <span className="icon">
-                                <MdOutlineEdit/>
-                            </span>
-                        </Link>
-
-                        <span className="icon"><MdDeleteOutline/></span>
-                    </div>
-                </div>
-                <div className="comments-container">
-                    <p>
-                        <span className='icon'>
-                            <BsArrowReturnRight/>
-                        </span>
-                        omg! How did you make that?
-                    </p>
-                    <p>
-                        <span className='icon'>
-                            <BsArrowReturnRight/>
-                        </span>
-                        watching this at 3am is not a good feeling
-                    </p>
-                    <input type="text" placeholder='Leave a comment'/>
-                </div>
-            </div>
+        <>
+            { getPost && 
+                <div className="view-post">
             
-        </div>
+                <div className="post-container">
+                     <p>Posted {createdAgo}</p>
+                     <h4>{getPost.title} </h4>
+                     <p>{getPost.content}</p>
+     
+                     { getPost.imgUrl ? 
+                     (
+                         <img className='post-img' src='https://stellanspice.com/wp-content/uploads/2022/02/IMG_4291-1.jpeg'/>
+                     )
+                     :
+                     null }
+                     
+                     <div className="post-stats">
+                         <p className='upvotes'><span className='icon'><AiOutlineHeart/></span>{getPost.upvotes}</p>
+                         <div className="update-icons">
+                             <Link to={'/editPost/' + id}>
+                                 <span className="icon">
+                                     <MdOutlineEdit/>
+                                 </span>
+                             </Link>
+     
+                             <span className="icon"><MdDeleteOutline/></span>
+                         </div>
+                     </div>
+                     <div className="comments-container">
+                         <p>
+                             <span className='icon'>
+                                 <BsArrowReturnRight/>
+                             </span>
+                             omg! How did you make that?
+                         </p>
+                         <p>
+                             <span className='icon'>
+                                 <BsArrowReturnRight/>
+                             </span>
+                             watching this at 3am is not a good feeling
+                         </p>
+                         <input type="text" placeholder='Leave a comment'/>
+                     </div>
+                 </div>
+                 
+             </div>   
+            }
+        </>
+       
+        
     )
 }

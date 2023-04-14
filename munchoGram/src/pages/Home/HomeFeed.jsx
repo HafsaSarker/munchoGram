@@ -21,28 +21,33 @@ export default function HomeFeed({allPosts, setAllPosts}){
     }, [allPosts])
     //console.log(allPosts)
     return (
-        <div className="home-feed">
-           <div className="sort">
-            <p>Order by: </p>
-            <button className='filter-btn' value="created_at" onClick={(e) => setSort(e.target.value)}>Newest</button>
-            <button className='filter-btn' value="upvotes" onClick={(e) => setSort(e.target.value)}>Most Popular</button>
-           </div>
-
-           <div className="card-container">
-                { allPosts && 
-                    allPosts.map((post, index) => 
-                        <Card 
-                            key={index}
-                            id={post.id}
-                            created={post.created_at}
-                            title={post.title}
-                            upvotes={post.upvotes}
-                        />
-                    )
-                }
-
-            </div>
-
-        </div>
+        <>
+            {allPosts && 
+                <div className="home-feed">
+                <div className="sort">
+                 <p>Order by: </p>
+                 <button className='filter-btn' value="created_at" onClick={(e) => setSort(e.target.value)}>Newest</button>
+                 <button className='filter-btn' value="upvotes" onClick={(e) => setSort(e.target.value)}>Most Popular</button>
+                </div>
+     
+                <div className="card-container">
+                     { allPosts && 
+                         allPosts.map((post, index) => 
+                             <Card 
+                                 key={index}
+                                 id={post.id}
+                                 created={post.created_at}
+                                 title={post.title}
+                                 upvotes={post.upvotes}
+                             />
+                         )
+                     }
+     
+                 </div>
+     
+             </div>
+            }
+        </>
+        
     )
 }
