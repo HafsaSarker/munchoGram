@@ -24,14 +24,28 @@ export default function UpdatePost({allPosts}){
 
         let user_key = prompt('Enter secret key to update your post')
         
-        while(user_key !== editedPost.user_key)
-        {
-            user_key = prompt('Wrong key, try again');
-        }
+        let i = 0;
+        while(i < 3)
+        {   
+            if(user_key === null){
+                break;
+            }
+            else if(user_key !== editedPost.user_key){
+                user_key = prompt('Wrong key, try again'); 
+            }
+            else{
+                updatePost(e);
+                break;
+            }
+            i++;
+        }    
 
-        if(user_key === editedPost.user_key){
+        if(i == 3 && user_key === editedPost.user_key) {
             updatePost(e);
-        }
+        }else if(i == 3 && user_key !== null){
+            alert('You have exceeded the allowed number of attempts :(')
+        }  
+        
     }
 
     const updatePost = async(e) => {
@@ -45,7 +59,12 @@ export default function UpdatePost({allPosts}){
             .eq('id', id);
         
         alert('Successfully updated :D');
+        
         window.location = "/";
+    }
+
+    const cancelEdit = () => {
+        history.back();
     }
 
     return (
@@ -65,7 +84,7 @@ export default function UpdatePost({allPosts}){
                     />
                     <textarea  
                         name='content'  
-                        value={editedPost.content}    
+                        value={editedPost.content === null ? "" : editedPost.content}    
                         placeholder='Content (Optional)' 
                         onChange={handleChange}
                     />
@@ -77,7 +96,12 @@ export default function UpdatePost({allPosts}){
                         placeholder='Image URL (Optional)' 
                         onChange={handleChange}
                     />
-                    <button>Edit</button>
+                    <div className="btn-container">
+                        <button>Edit</button>
+                        <button type='button'
+                        onClick={cancelEdit}>Cancel</button>
+                    </div>
+                    
                 </form>
             }
             

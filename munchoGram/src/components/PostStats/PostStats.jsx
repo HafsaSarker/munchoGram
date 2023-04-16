@@ -16,14 +16,27 @@ export default function PostStats({upvotes, id, post_key}) {
 
     const handleDelete = () => {
         let user_key = prompt('Enter secret key to delete your post')
-        
-        while(user_key !== post_key)
-        {
-            user_key = prompt('Wrong key, try again');
-        }
 
-        if(user_key === post_key){
+        let i = 0;
+        while(i < 3)
+        {   
+            if(user_key === null){
+                break;
+            }
+            else if(user_key !== post_key){
+                user_key = prompt('Wrong key, try again'); 
+            }
+            else{
+                deletePost();
+                break;
+            }
+            i++;
+        }    
+
+        if(i == 3 && user_key === post_key) {
             deletePost();
+        }else if(i == 3 && user_key !== null){
+            alert('You have exceeded the allowed number of attempts :(')
         }
     }
 
