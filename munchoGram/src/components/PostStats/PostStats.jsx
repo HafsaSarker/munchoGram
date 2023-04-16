@@ -3,15 +3,36 @@ import { supabase } from '../../Client';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
 import { MdOutlineEdit, MdDeleteOutline } from 'react-icons/md'
 import { Link } from 'react-router-dom'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function PostStats({upvotes, id, post_key}) {
-    const [likes, setLikes] = useState(0);
+    const [likesCount, setLikesCount] = useState(0);
     const [liked, setLiked] = useState(false);
 
-    const updateLikes = () =>{
+    useEffect(() => {
+        const fetchLikes = async () => {
+            const {data} = await supabase 
+                .from('munchies')
+                .select()
+                .eq('id', id)
+                .single();
+
+            setLikesCount(data.upvotes);
+        }
+        fetchLikes();
+    },[likesCount])
+
+    const updateLikes = async (event) =>{
+        event.preventDefault();
+
         setLiked(true);
-        setLikes(prev => prev+1);
+
+        await supabase
+            .from('munchies')
+            .update({ upvotes: likesCount + 1})
+            .eq('id', id);
+
+        setLikesCount(prev => prev+1)
     }
 
     const handleDelete = () => {
@@ -57,7 +78,7 @@ export default function PostStats({upvotes, id, post_key}) {
                     onClick={updateLikes}
                 >
                     {liked ? <AiFillHeart/> :  <AiOutlineHeart/>}
-                </span>{likes}
+                </span>{likesCount}
             </p>
 
             <div className="update-icons">
