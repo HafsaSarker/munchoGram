@@ -1,6 +1,7 @@
 import './HomeFeed.css'
 import { useEffect, useState } from 'react'
 import Card from '../../components/Card/Card';
+import panda from '../../../public/panda.png'
 import { supabase } from '../../Client';
 
 export default function HomeFeed({allPosts, setAllPosts}){
@@ -21,6 +22,11 @@ export default function HomeFeed({allPosts, setAllPosts}){
 
     return (
         <>
+            <div className="header">
+                <h4>a place for foodies...</h4>
+                <img src={panda} />
+
+            </div>
             {allPosts && 
                 <div className="home-feed">
                 <div className="sort">

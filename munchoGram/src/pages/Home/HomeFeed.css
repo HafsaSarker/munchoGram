@@ -1,3 +1,17 @@
+.header{
+    margin-top: 20px;
+    color: hsl(211.86,100%,5%);
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.header > img {
+    width: 70px;
+}
 .home-feed {
     color: black;
     display: flex;
@@ -10,7 +24,7 @@
 
 .sort {
     width: 100%;
-    margin: 25px;
+    margin: 5px;
     display: flex; 
     align-items: center;
     gap: 8px;
@@ -26,7 +40,7 @@
 }
 
 .filter-btn:focus {
-    background-color: hsl(20, 80%, 43%);
+    background-color: hsl(212, 77%, 29%);
 }
 
 .card-container {

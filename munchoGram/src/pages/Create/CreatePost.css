@@ -1,5 +1,8 @@
-.create-post{
+.create-img {
     margin-top: 50px;
+    width: 70px;
+}
+.create-post{
     color:hsl(211.86,80%,40%);
     display: flex;
     flex-direction: column;

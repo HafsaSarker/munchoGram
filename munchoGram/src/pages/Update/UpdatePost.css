@@ -1,5 +1,8 @@
-.update-post{
+.update-img {
     margin-top: 50px;
+    width: 70px;
+}
+.update-post{
     color:hsl(211.86,80%,40%);
     display: flex;
     flex-direction: column;

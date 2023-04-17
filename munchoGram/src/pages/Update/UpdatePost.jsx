@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './UpdatePost.css'
+import sleepyPanda from '../../../public/sleep.png'
 import { supabase } from '../../Client';
 import { useParams } from 'react-router-dom';
 
@@ -69,43 +70,46 @@ export default function UpdatePost({allPosts}){
     }
 
     return (
-        <div className="update-post">
-            <h3>Edit Post</h3>
-            { editedPost && 
-                <form 
-                className='update-post-form'
-                onSubmit={handleSubmit}
-                >
-                    <input 
-                        type="text" placeholder='Title'
-                        name='title' 
-                        value={editedPost.title}
-                        onChange={handleChange}
-                        required
-                    />
-                    <textarea  
-                        name='content'  
-                        value={editedPost.content === null ? "" : editedPost.content}    
-                        placeholder='Content (Optional)' 
-                        onChange={handleChange}
-                    />
-                    <input 
-                        type='text'
-                        name='imgUrl' 
+        <>
+            <img className='update-img' src={sleepyPanda}/>
+            <div className="update-post">
+                <h3>Edit Post</h3>
+                { editedPost && 
+                    <form 
+                    className='update-post-form'
+                    onSubmit={handleSubmit}
+                    >
+                        <input 
+                            type="text" placeholder='Title'
+                            name='title' 
+                            value={editedPost.title}
+                            onChange={handleChange}
+                            required
+                        />
+                        <textarea  
+                            name='content'  
+                            value={editedPost.content === null ? "" : editedPost.content}    
+                            placeholder='Content (Optional)' 
+                            onChange={handleChange}
+                        />
+                        <input 
+                            type='text'
+                            name='imgUrl' 
 
-                        value={editedPost.imgUrl ? editedPost.imgUrl : ""}  
-                        placeholder='Image URL (Optional)' 
-                        onChange={handleChange}
-                    />
-                    <div className="btn-container">
-                        <button>Edit</button>
-                        <button type='button'
-                        onClick={cancelEdit}>Cancel</button>
-                    </div>
-                    
-                </form>
-            }
-            
-        </div>
+                            value={editedPost.imgUrl ? editedPost.imgUrl : ""}  
+                            placeholder='Image URL (Optional)' 
+                            onChange={handleChange}
+                        />
+                        <div className="btn-container">
+                            <button>Edit</button>
+                            <button type='button'
+                            onClick={cancelEdit}>Cancel</button>
+                        </div>
+                        
+                    </form>
+                }
+                
+            </div>
+        </>
     )
 }

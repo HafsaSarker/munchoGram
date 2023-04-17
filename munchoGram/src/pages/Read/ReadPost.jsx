@@ -12,7 +12,7 @@ export default function ReadPost({allPosts}){
 
     const createdAgo = moment(new Date(getPost.created_at)).fromNow();
     const edited_at = moment(new Date(getPost.edited)).fromNow()
-    
+
     return (
         <>
             { getPost && 
@@ -30,7 +30,7 @@ export default function ReadPost({allPosts}){
         
                         { getPost.imgUrl ? 
                         (
-                            <img className='post-img' src={getPost.imgUrl}/>
+                            <img className='post-img' src={getPost.imgUrl} alt='a broken img link'/>
                         )
                         :
                         null }
