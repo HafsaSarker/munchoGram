@@ -1,23 +1,30 @@
 .comments-container {
+    background-color: #dddcdc;
+}
+
+.comments-container > h4 {
+    padding: 6px 4px;
+    background-color: #cfcece;
+}
+.comments-main{
     display: flex;
     flex-direction: column;
     gap: 8px;
     padding: 15px 15px;
-    background-color: #dddcdc;
 }
-
-.comments-container > form{
+.comments-main > form{
     display: flex;
     border: 1px solid #b8b7b7;
+    border-radius: 10px;
 }
-.comments-container > form > input{
+.comments-main > form > input{
     width: 100%;
     padding: 4px 2px;
-    
+    border-radius: 10px 0px 0px 10px;
     border: none;
 }
 .comment-btn {
-    border-radius: 0;
+    border-radius: 0px 10px 10px 0px;
 }
 .comment-btn > span {
     vertical-align:bottom;

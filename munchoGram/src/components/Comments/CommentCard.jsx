@@ -1,7 +1,7 @@
-import './CommentCard.css'
 import { BsArrowReturnRight } from 'react-icons/bs'
 
 export default function CommentCard({commentContent}) {
+
     return (
         <div className='single-comment'>
             <p>
@@ -11,7 +11,6 @@ export default function CommentCard({commentContent}) {
                 {commentContent} 
                 
             </p>
-            <span className='comment-action'>Delete</span>
         </div>
         
     )

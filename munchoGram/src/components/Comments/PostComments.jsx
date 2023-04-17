@@ -50,35 +50,40 @@ export default function PostComments({id}){
         //clear comment input
         setInput("");
     }
-    console.log(allComments)
+
     return (
         <div className="comments-container">
+            <h4>Comments</h4>
+            <div className="comments-main">
+                {allComments && allComments.length > 0 ?
+                (allComments.map((item, index) => 
+                    <CommentCard
+                        key={index}
+                        commentContent = {item}
+                        id = {id}
+                    />
+                )):
+                (
+                    <p>
+                        <span className='icon'>
+                            <BsArrowReturnRight/>
+                        </span>
+                        No comments yet. Make one below!
+                    </p>
+                    
+                )}
+                <form onSubmit={submitComment}>
+                    <input 
+                        value={input}
+                        type="text" 
+                        placeholder='Leave a comment'
+                        onChange={handleChange}
+                        required
+                    />
+                    <button type='submit' className='comment-btn'><MdComment/></button>
+                </form>
+            </div>
             
-            {allComments && allComments.length > 0 ?
-            (allComments.map((item, index) => 
-                <CommentCard
-                    key={index}
-                    commentContent = {item}
-                />
-            )):
-            (
-                <p>
-                    <span className='icon'>
-                        <BsArrowReturnRight/>
-                    </span>
-                    No comments yet. Make one below!
-                </p>
-                
-            )}
-            <form onSubmit={submitComment}>
-                <input 
-                    value={input}
-                    type="text" 
-                    placeholder='Leave a comment'
-                    onChange={handleChange}
-                />
-                <button type='submit' className='comment-btn'><MdComment/></button>
-            </form>
             
         </div>
     )
