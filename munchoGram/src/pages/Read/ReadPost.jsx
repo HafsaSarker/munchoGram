@@ -20,7 +20,10 @@ export default function ReadPost({allPosts}){
                     <div className="post-container">
                         <div className="times">
                             <p>Posted {createdAgo}</p>
-                            <p className='sub-time'>(edited) {edited_at}</p>
+                            { getPost.edited ? (
+                                <p className='sub-time'>(edited) {edited_at}</p>
+                            ):null
+                            }
                         </div>
                         <h4>{getPost.title} </h4>
                         <p>{getPost.content}</p>

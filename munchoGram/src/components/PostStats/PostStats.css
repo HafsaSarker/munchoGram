@@ -9,12 +9,12 @@
 }
 
 .update-icons .icon{
-    background-color: #dddcdc;
+    background-color: hsl(211.86,10%,90%);
     padding: 5px 6px;
     border-radius: 15px;
     transition: all .3s;
 }
 .update-icons .icon:hover{
-    background-color: #cfcece;
+    background-color: hsl(210, 18%, 93%);
 }
 

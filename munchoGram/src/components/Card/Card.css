@@ -3,14 +3,14 @@
     flex-direction: column;
     gap: 10px;
     padding: 20px 30px;
-    background-color: #eeeeee;
+    background-color: hsl(211.86,10%,80%);
     border-radius: 4px;
     cursor: pointer;
     transition: all .3s;
 }
 
 .card:hover {
-    background-color: #e9e9e9;
+    background-color: hsl(210, 10%, 73%);
 }
 .times {
     display: flex;

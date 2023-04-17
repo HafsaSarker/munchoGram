@@ -11,7 +11,10 @@ export default function Card({id,created,title, upvotes, edited}) {
                 <div className="card">
                     <div className="times">
                         <p>Posted {createdAgo}</p>
-                        <p className='sub-time'>(edited) {edited_at}</p>
+                        { edited ? (
+                            <p className='sub-time'>(edited) {edited_at}</p>
+                        ):null
+                        }   
                     </div>
                     
 

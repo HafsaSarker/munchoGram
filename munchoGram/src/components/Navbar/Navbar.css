@@ -3,7 +3,7 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: hsl(20, 85%, 55%);
+    background-color: hsl(211.86,60%,45%);
     color: #fff;
 }
 
@@ -13,7 +13,8 @@ nav > ul {
 }
 
 nav > input {
-    padding: 2px 10px;
+    padding: 3px 16px;
+    width: 250px;
     border-radius: 15px;
-    border: 3px solid hsl(20, 60%, 50%);
+    border: 2px solid hsl(211.86,80%,40%);
 }

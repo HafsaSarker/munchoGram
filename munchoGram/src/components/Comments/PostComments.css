@@ -1,10 +1,10 @@
 .comments-container {
-    background-color: #dddcdc;
+    background-color: hsl(211.86,10%,90%);
 }
 
 .comments-container > h4 {
     padding: 6px 15px;
-    background-color: #cfcece;
+    background-color: hsl(211.86,60%,60%);
 }
 .comments-main{
     display: flex;
@@ -14,7 +14,7 @@
 }
 .comments-main > form{
     display: flex;
-    border: 1px solid #b8b7b7;
+    border: 1px solid hsl(215, 28%, 88%);
     border-radius: 10px;
 }
 .comments-main > form > input{

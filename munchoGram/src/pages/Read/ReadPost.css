@@ -1,5 +1,5 @@
 .view-post { 
-    color: black;
+    color: hsl(211.86,100%,5%);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -16,7 +16,7 @@
     flex-direction: column;
     gap: 20px;
     border-radius: 4px;
-    background-color: #eeeeee;
+    background-color: hsl(211.86,10%,80%);
 }
 
 .post-img {
