@@ -2,14 +2,18 @@ import './Card.css'
 import { Link } from "react-router-dom";
 import moment from 'moment';
 
-export default function Card({id,created,title, upvotes}) {
+export default function Card({id,created,title, upvotes, edited}) {
     const createdAgo = moment(new Date(created)).fromNow();
-
+    const edited_at = moment(new Date(edited)).fromNow()
     return (
         <>
             <Link to={'/viewPost/' + id}>
                 <div className="card">
-                    <p>Posted {createdAgo}</p>
+                    <div className="times">
+                        <p>Posted {createdAgo}</p>
+                        <p className='sub-time'>(edited) {edited_at}</p>
+                    </div>
+                    
 
                     <h4>{title}</h4>
 

@@ -36,6 +36,7 @@ export default function HomeFeed({allPosts, setAllPosts}){
                                  key={index}
                                  id={post.id}
                                  created={post.created_at}
+                                 edited={post.edited}
                                  title={post.title}
                                  upvotes={post.upvotes}
                              />

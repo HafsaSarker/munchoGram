@@ -55,6 +55,7 @@ export default function UpdatePost({allPosts}){
                 title: editedPost.title,
                 content: editedPost.content,
                 imgUrl: editedPost.imgUrl,
+                edited: new Date().toISOString()
             })
             .eq('id', id);
         
