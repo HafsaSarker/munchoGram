@@ -6,7 +6,6 @@ import { supabase } from '../../Client';
 export default function HomeFeed({allPosts, setAllPosts}){
     const[sort, setSort] = useState("created_at");
 
-    // console.log(sort)
     //fetch all posts
     useEffect(() => {
         const fetchPosts = async () => {
@@ -19,7 +18,7 @@ export default function HomeFeed({allPosts, setAllPosts}){
         }
         fetchPosts();
     }, [allPosts])
-    //console.log(allPosts)
+
     return (
         <>
             {allPosts && 

@@ -25,7 +25,7 @@ export default function CreatePost(){
                 title: newPost.title,
                 content: newPost.content,
                 imgUrl: newPost.url,
-                user_key: newPost.user_key
+                user_key: newPost.user_key,
             })
             .select();
         alert('Post created!');        
