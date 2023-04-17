@@ -11,14 +11,17 @@ export default function ReadPost({allPosts}){
     const getPost = allPosts.filter((item) => item.id === idNum )[0];
 
     const createdAgo = moment(new Date(getPost.created_at)).fromNow();
-
+    const edited_at = moment(new Date(getPost.edited)).fromNow()
     
     return (
         <>
             { getPost && 
                 <div className="view-post">
                     <div className="post-container">
-                        <p>Posted {createdAgo}</p>
+                        <div className="times">
+                            <p>Posted {createdAgo}</p>
+                            <p className='sub-time'>(edited) {edited_at}</p>
+                        </div>
                         <h4>{getPost.title} </h4>
                         <p>{getPost.content}</p>
         
