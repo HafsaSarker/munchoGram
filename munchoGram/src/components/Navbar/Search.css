@@ -1,4 +1,4 @@
-input {
+.search > input {
     padding: 3px 16px;
     width: 250px;
     border-radius: 15px;

@@ -7,7 +7,6 @@ import { supabase } from '../../Client';
 export default function HomeFeed({allPosts, setAllPosts, searchInput}){
     const[sort, setSort] = useState("created_at");
 
-
     //fetch all posts
     useEffect(() => {
         const fetchPosts = async () => {
@@ -21,17 +20,13 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
         fetchPosts();
     }, [allPosts])
 
-    
     const filteredPosts = searchInput && 
         allPosts.filter(item =>
         item.title
         .toLowerCase()
         .includes(searchInput)
     )
-    
-    useEffect(()=> {
-        console.log(filteredPosts)
-    },[searchInput])
+
     return (
         <>  
             <div className="header">
@@ -40,38 +35,50 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
 
             </div>
             
-            {allPosts && !searchInput ?
+            {allPosts &&
                 <div className="home-feed">
                 <div className="sort">
                  <p>Order by: </p>
                  <button className='filter-btn' value="created_at" onClick={(e) => setSort(e.target.value)}>Newest</button>
                  <button className='filter-btn' value="upvotes" onClick={(e) => setSort(e.target.value)}>Most Popular</button>
                 </div>
-     
-                <div className="card-container">
-                     { allPosts && 
-                         allPosts.map((post, index) => 
-                             <Card 
-                                 key={index}
-                                 id={post.id}
-                                 created={post.created_at}
-                                 edited={post.edited}
-                                 title={post.title}
-                                 upvotes={post.upvotes}
-                             />
-                         )
-                     }
-     
-                 </div>
+                
+                { !searchInput ? (
+                    <div className="card-container">
+                        {
+                            allPosts.map((post, index) => 
+                                <Card 
+                                    key={index}
+                                    id={post.id}
+                                    created={post.created_at}
+                                    edited={post.edited}
+                                    title={post.title}
+                                    upvotes={post.upvotes}
+                                />
+                            )
+                        }
+        
+                    </div>
+                )
+                : (
+                    <div className="card-container">
+                        { 
+                            filteredPosts.map((post, index) => 
+                                <Card 
+                                    key={index}
+                                    id={post.id}
+                                    created={post.created_at}
+                                    edited={post.edited}
+                                    title={post.title}
+                                    upvotes={post.upvotes}
+                                />
+                            )
+                        }
+        
+                    </div>
+                )}
      
              </div>
-             : 
-             <div className="search-container">
-                    <p>Results for: {searchInput}</p>
-                    <div className="search-res">
-
-                    </div>
-                </div>
             }
         </>
         
