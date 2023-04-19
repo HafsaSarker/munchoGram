@@ -56,7 +56,8 @@ export default function UpdatePost({allPosts}){
                 title: editedPost.title,
                 content: editedPost.content,
                 imgUrl: editedPost.imgUrl,
-                edited: new Date().toISOString()
+                edited: new Date().toISOString(),
+                flag: editedPost.flag
             })
             .eq('id', id);
         
@@ -100,6 +101,33 @@ export default function UpdatePost({allPosts}){
                             placeholder='Image URL (Optional)' 
                             onChange={handleChange}
                         />
+
+                        <div className="flag">
+                            <h4>Post type</h4>
+                            <div className="flag-input">
+                                <label>
+                                    <input 
+                                        type="radio" 
+                                        name="flag" 
+                                        value="opinion"
+                                        checked={editedPost.flag === "opinion"}
+                                        onChange={handleChange}
+                                    />
+                                    Opinion
+                                </label>
+                                <label>
+                                    <input 
+                                        type="radio" 
+                                        name="flag"
+                                        value="question" 
+                                        checked={editedPost.flag === "question"}
+                                        onChange={handleChange}
+                                    />
+                                    Question
+                                </label>
+                            </div>   
+                        </div>
+
                         <div className="btn-container">
                             <button>Edit</button>
                             <button type='button'

@@ -8,7 +8,8 @@ export default function CreatePost(){
         title: "",
         content: null,
         url: null,
-        user_key: null
+        user_key: null,
+        flag: "opinion"
     });
     const handleChange = (e) => {
         setNewPost((prev) => ({
@@ -27,6 +28,7 @@ export default function CreatePost(){
                 content: newPost.content,
                 imgUrl: newPost.url,
                 user_key: newPost.user_key,
+                flag: newPost.flag
             })
             .select();
         alert('Post created!');        
@@ -56,6 +58,33 @@ export default function CreatePost(){
                         name='url'
                         onChange={handleChange}
                     />
+
+                    <div className="flag">
+                        <h4>Post type</h4>
+                        <div className="flag-input">
+                            <label>
+                                <input 
+                                    type="radio" 
+                                    name="flag" 
+                                    value="opinion"
+                                    checked={newPost.flag === "opinion"}
+                                    onChange={handleChange}
+                                />
+                                Opinion
+                            </label>
+                            <label>
+                                <input 
+                                    type="radio" 
+                                    name="flag"
+                                    value="question" 
+                                    checked={newPost.flag === "question"}
+                                    onChange={handleChange}
+                                />
+                                Question
+                            </label>
+                        </div>   
+                    </div>
+
                     <input 
                         type='text' 
                         placeholder='Secret key' 
