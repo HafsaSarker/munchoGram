@@ -9,12 +9,13 @@ import ReadPost from './pages/Read/ReadPost';
 
 function App() {
   const [allPosts, setAllPosts] = useState(null);
-
+  const [searchInput, setSearchInput] = useState("");
+  // console.log(searchInput);
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts}/>}/>
+        <Route path='/' element={<Layout setSearchInput={setSearchInput} />}>
+          <Route index element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts} searchInput={searchInput}/>}/>
           <Route path='/createPost' element={<CreatePost />}/>
           <Route path='/editPost/:id' element={<UpdatePost allPosts={allPosts} />}/>
           <Route path='/viewPost/:id' element={<ReadPost allPosts={allPosts}/>}/>

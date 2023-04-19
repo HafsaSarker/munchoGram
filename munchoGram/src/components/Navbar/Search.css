@@ -1,0 +1,6 @@
+input {
+    padding: 3px 16px;
+    width: 250px;
+    border-radius: 15px;
+    border: 2px solid hsl(211.86,80%,40%);
+}

@@ -4,8 +4,9 @@ import Card from '../../components/Card/Card';
 import panda from '../../../public/panda.png'
 import { supabase } from '../../Client';
 
-export default function HomeFeed({allPosts, setAllPosts}){
+export default function HomeFeed({allPosts, setAllPosts, searchInput}){
     const[sort, setSort] = useState("created_at");
+
 
     //fetch all posts
     useEffect(() => {
@@ -20,14 +21,26 @@ export default function HomeFeed({allPosts, setAllPosts}){
         fetchPosts();
     }, [allPosts])
 
+    
+    const filteredPosts = searchInput && 
+        allPosts.filter(item =>
+        item.title
+        .toLowerCase()
+        .includes(searchInput)
+    )
+    
+    useEffect(()=> {
+        console.log(filteredPosts)
+    },[searchInput])
     return (
-        <>
+        <>  
             <div className="header">
                 <h4>a place for foodies...</h4>
                 <img src={panda} />
 
             </div>
-            {allPosts && 
+            
+            {allPosts && !searchInput ?
                 <div className="home-feed">
                 <div className="sort">
                  <p>Order by: </p>
@@ -52,6 +65,13 @@ export default function HomeFeed({allPosts, setAllPosts}){
                  </div>
      
              </div>
+             : 
+             <div className="search-container">
+                    <p>Results for: {searchInput}</p>
+                    <div className="search-res">
+
+                    </div>
+                </div>
             }
         </>
         
