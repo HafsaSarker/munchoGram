@@ -12,11 +12,12 @@ function App() {
   const [allPosts, setAllPosts] = useState(null);
   const [searchInput, setSearchInput] = useState("");
   const [auth, setAuth] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Layout setSearchInput={setSearchInput} />}>
+        <Route path='/' element={<Layout setSearchInput={setSearchInput} isLoggedIn={isLoggedIn} />}>
           <Route index element={<AuthModal auth={auth} setAuth={setAuth} />}/>
           <Route path='/home' element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts} searchInput={searchInput}/>}/>
           <Route path='/createPost' element={<CreatePost />}/>
