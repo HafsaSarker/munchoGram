@@ -1,10 +1,11 @@
 import './Card.css'
 import { MdAddCircle } from 'react-icons/md'
+import { BsFillQuestionCircleFill } from 'react-icons/bs'
 import { Link } from "react-router-dom";
 import moment from 'moment';
 import { useState } from 'react';
 
-export default function Card({id,created,title, upvotes, edited, content, img}) {
+export default function Card({id,created,title, upvotes, edited, flag, content, img}) {
     const [showCont, setShowCont] = useState(false);
     const createdAgo = moment(new Date(created)).fromNow();
     const edited_at = moment(new Date(edited)).fromNow();
@@ -19,7 +20,7 @@ export default function Card({id,created,title, upvotes, edited, content, img}) 
             </div>
 
             <Link to={'/viewPost/' + id}>
-                <h3>{title}</h3>
+                <h4>{flag === "question" ? <span className='icon'><BsFillQuestionCircleFill /></span> : null }{title} </h4>
             </Link>
 
             <div className='p-link'>

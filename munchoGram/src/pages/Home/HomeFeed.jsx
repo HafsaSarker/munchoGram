@@ -70,6 +70,7 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
                                     edited={post.edited}
                                     title={post.title}
                                     upvotes={post.upvotes}
+                                    flag={post.flag}
                                     content={post.content}
                                     img={post.imgUrl}
                                 />
@@ -89,6 +90,7 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
                                     edited={post.edited}
                                     title={post.title}
                                     upvotes={post.upvotes}
+                                    flag={post.flag}
                                     content={post.content}
                                     img={post.imgUrl}
                                 />
