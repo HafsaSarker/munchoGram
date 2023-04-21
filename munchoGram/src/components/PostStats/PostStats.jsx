@@ -67,7 +67,7 @@ export default function PostStats({upvotes, id, post_key}) {
             .delete()
             .eq('id', id);
         alert('Post deleted!');
-        window.location='/';
+        window.location='/home';
     }
 
     return (

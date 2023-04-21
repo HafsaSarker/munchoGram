@@ -1,8 +1,8 @@
-import './ReadPost.css'
 import moment from 'moment';
 import PostStats from '../../components/PostStats/PostStats';
 import PostComments from '../../components/Comments/PostComments';
 import { useParams } from 'react-router-dom';
+import './ReadPost.css'
 
 export default function ReadPost({allPosts}){
     let {id} = useParams();
@@ -42,13 +42,11 @@ export default function ReadPost({allPosts}){
                         />
 
                         <PostComments id={id}/>
-                        
                     </div>
                  
                 </div>   
             }
         </>
        
-        
     )
 }

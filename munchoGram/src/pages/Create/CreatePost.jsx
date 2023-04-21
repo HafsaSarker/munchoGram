@@ -35,7 +35,7 @@ export default function CreatePost(){
             })
             .select();
         alert('Post created!');        
-        window.location='/';
+        window.location='/home';
     }
     return (
         <>

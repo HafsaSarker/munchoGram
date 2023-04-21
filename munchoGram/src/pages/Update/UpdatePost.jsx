@@ -65,7 +65,7 @@ export default function UpdatePost({allPosts}){
         
         alert('Successfully updated :D');
         
-        window.location = "/";
+        window.location = "/home";
     }
 
     const cancelEdit = () => {

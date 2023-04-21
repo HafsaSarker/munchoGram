@@ -6,16 +6,19 @@ import CreatePost from './pages/Create/CreatePost';
 import Layout from './routes/Layout/Layout';
 import UpdatePost from './pages/Update/UpdatePost';
 import ReadPost from './pages/Read/ReadPost';
+import AuthModal from './pages/Auth/AuthModal';
 
 function App() {
   const [allPosts, setAllPosts] = useState(null);
   const [searchInput, setSearchInput] = useState("");
-  // console.log(searchInput);
+  const [auth, setAuth] = useState(false);
+
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<Layout setSearchInput={setSearchInput} />}>
-          <Route index element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts} searchInput={searchInput}/>}/>
+          <Route index element={<AuthModal />}/>
+          <Route path='/home' element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts} searchInput={searchInput}/>}/>
           <Route path='/createPost' element={<CreatePost />}/>
           <Route path='/editPost/:id' element={<UpdatePost allPosts={allPosts} />}/>
           <Route path='/viewPost/:id' element={<ReadPost allPosts={allPosts}/>}/>

@@ -9,7 +9,7 @@ export default function Navbar({setSearchInput}){
             <h1>munchoGram</h1>
             <Search setSearchInput={setSearchInput} />
             <ul>
-                <Link to='/'>
+                <Link to='/home'>
                     <li>Home</li>
                 </Link>
                 <Link to='/createPost'>
