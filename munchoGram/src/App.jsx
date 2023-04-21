@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Layout setSearchInput={setSearchInput} />}>
-          <Route index element={<AuthModal />}/>
+          <Route index element={<AuthModal auth={auth} setAuth={setAuth} />}/>
           <Route path='/home' element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts} searchInput={searchInput}/>}/>
           <Route path='/createPost' element={<CreatePost />}/>
           <Route path='/editPost/:id' element={<UpdatePost allPosts={allPosts} />}/>
