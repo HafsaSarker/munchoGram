@@ -1,26 +1,44 @@
+import { useState } from 'react'
 import sleepyPanda from '../../../public/sleep.png'
 import './AuthModal.css'
 
 export default function AuthModal({auth, setAuth}){
+    const [createForm, setCreateForm] = useState({
+        username: "",
+        password: ""
+    })
+
+    function handleChange(e){
+        setCreateForm((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value
+        }))
+    }
+    function createAccout(e){
+        e.preventDefault();
+        console.log(createForm)
+    }
     return (
         <>
             <img className='auth-img' src={sleepyPanda}/>
             <div className="auth-modal">
                 {!auth ? 
-                    <form>
+                    <form onSubmit={createAccout}>
                         <h2>Sign Up</h2>
                         <label>
                             Username:
                             <input 
                                 type="text" 
-                                name="" 
+                                name="username" 
+                                onChange={handleChange}
                             />
                         </label>
                         <label>
                             Password:
                             <input 
                                 type="text" 
-                                name="" 
+                                name="password" 
+                                onChange={handleChange}
                             />
                         </label>
                         <button>Sign Up</button>
