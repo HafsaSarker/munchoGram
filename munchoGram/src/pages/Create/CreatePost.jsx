@@ -11,6 +11,7 @@ export default function CreatePost(){
         user_key: null,
         flag: "opinion"
     });
+    
     const handleChange = (e) => {
         setNewPost((prev) => ({
             ...prev,
@@ -20,7 +21,8 @@ export default function CreatePost(){
 
     const createPost = async (e) => {
         e.preventDefault();
-
+        const quesFlag = newPost.flag === "question" ? true : false;
+        console.log(quesFlag)
         await supabase
             .from('munchies')
             .insert({
@@ -28,7 +30,8 @@ export default function CreatePost(){
                 content: newPost.content,
                 imgUrl: newPost.url,
                 user_key: newPost.user_key,
-                flag: newPost.flag
+                flag: newPost.flag,
+                isQuestion: quesFlag
             })
             .select();
         alert('Post created!');        

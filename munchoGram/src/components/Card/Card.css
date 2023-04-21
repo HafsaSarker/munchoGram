@@ -8,7 +8,9 @@
     cursor: pointer;
     transition: all .3s;
 }
-
+.card > h4 > .icon {
+    color: rgba(206, 54, 54, 0.918);
+}
 .card:hover {
     background-color: hsl(210, 10%, 73%);
 }

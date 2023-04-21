@@ -6,14 +6,24 @@ import { supabase } from '../../Client';
 
 export default function HomeFeed({allPosts, setAllPosts, searchInput}){
     const[sort, setSort] = useState("created_at");
+    let ascend = {};
 
+    if(sort === "isQuestion"){
+        ascend = { isQuestion: true, ascending: false}
+    }
+    else if(sort === "flag"){
+        ascend = { flag: 'opinion' }
+    }
+    else{   
+        ascend = {ascending: false}
+    }
     //fetch all posts
     useEffect(() => {
         const fetchPosts = async () => {
             const {data} = await supabase
             .from('munchies')
             .select()
-            .order(sort, { ascending: false });
+            .order(sort, ascend);
             
             setAllPosts(data);
         }
@@ -38,9 +48,15 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
             {allPosts &&
                 <div className="home-feed">
                 <div className="sort">
-                 <p>Order by: </p>
-                 <button className='filter-btn' value="created_at" onClick={(e) => setSort(e.target.value)}>Newest</button>
-                 <button className='filter-btn' value="upvotes" onClick={(e) => setSort(e.target.value)}>Most Popular</button>
+                    <p>Order by: </p>
+                    
+                    <button className='filter-btn' value="created_at" onClick={(e) => setSort(e.target.value)}>Newest</button>
+
+                    <button className='filter-btn' value="upvotes" onClick={(e) => setSort(e.target.value)}>Most Popular</button>
+
+                    <button className='filter-btn' value="isQuestion" onClick={(e) => setSort(e.target.value)}>Question</button>
+
+                    <button className='filter-btn' value="flag" onClick={(e) => setSort(e.target.value)}>Opinion</button>
                 </div>
                 
                 { !searchInput ? (
@@ -54,6 +70,7 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
                                     edited={post.edited}
                                     title={post.title}
                                     upvotes={post.upvotes}
+                                    flag={post.flag}
                                 />
                             )
                         }
@@ -71,6 +88,7 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
                                     edited={post.edited}
                                     title={post.title}
                                     upvotes={post.upvotes}
+                                    flag={post.flag}
                                 />
                             )
                         }

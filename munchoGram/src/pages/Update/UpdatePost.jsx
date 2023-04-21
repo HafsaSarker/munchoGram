@@ -17,7 +17,6 @@ export default function UpdatePost({allPosts}){
             ...prev,
             [e.target.name]: e.target.value
         }));
-        console.log(e.target.value)
     }
 
     const handleSubmit = (e) => {
@@ -50,6 +49,8 @@ export default function UpdatePost({allPosts}){
     }
 
     const updatePost = async(e) => {
+        const quesFlag = editedPost.flag === "question" ? true : false;
+
         await supabase
             .from('munchies')
             .update({
@@ -57,7 +58,8 @@ export default function UpdatePost({allPosts}){
                 content: editedPost.content,
                 imgUrl: editedPost.imgUrl,
                 edited: new Date().toISOString(),
-                flag: editedPost.flag
+                flag: editedPost.flag,
+                isQuestion: quesFlag
             })
             .eq('id', id);
         
