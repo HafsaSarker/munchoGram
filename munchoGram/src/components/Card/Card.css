@@ -5,10 +5,12 @@
     padding: 20px 30px;
     background-color: hsl(211.86,10%,80%);
     border-radius: 4px;
-    cursor: pointer;
     transition: all .3s;
 }
-.card > h4 > .icon {
+.card > a {
+    color: black;
+}
+.card > h3 > .icon {
     color: rgba(206, 54, 54, 0.918);
 }
 .card:hover {
@@ -22,4 +24,35 @@
 .sub-time {
     font-size: 10px;
     font-weight: 600;
+}
+.p-link {
+    display: flex;
+    gap: 2px;
+    font-size: 11px;
+    text-align: center;
+    align-items: center;
+    border-bottom: 1px solid hsl(211.86,10%,55%);
+    width: 65px;
+    cursor: pointer;
+}
+.p-link > .icon {
+    color: rgb(196, 95, 0);
+}
+
+.expand > img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    padding-bottom: 5px;
+}
+.expand {
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    background-color: hsl(210, 10%, 63%);
 }
