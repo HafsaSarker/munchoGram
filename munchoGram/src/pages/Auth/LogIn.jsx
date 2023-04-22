@@ -2,7 +2,7 @@ import { useState } from "react"
 import { supabase } from "../../Client";
 import { useNavigate } from "react-router-dom";
 
-export default function LogIn({setAuth, setIsLoggedIn}){
+export default function LogIn({setAuth, setIsLoggedIn, setToken}){
     const [logInForm, setLogInForm] = useState({
         email: "",
         password: ""  
@@ -27,6 +27,7 @@ export default function LogIn({setAuth, setIsLoggedIn}){
     
             if (error) throw error
             navigate('/home')
+            setToken(data)
             setIsLoggedIn(true)
 
         } catch (error) {
