@@ -25,7 +25,7 @@ export default function PostComments({id, token, post}){
     }, [allComments]) 
 
     const handleChange = (e) => {
-        let lastID = allComments.length > 0 ? allComments[allComments.length - 1].id_ + 1 : 0;
+        let lastID = allComments && allComments.length > 0 ? allComments[allComments.length - 1].id_ + 1 : 0;
         
         setInput((prev) => ({
             ...prev,
