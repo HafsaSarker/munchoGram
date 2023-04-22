@@ -55,7 +55,10 @@ export default function PostComments({id, token}){
             .eq('id', id);
 
         //clear comment input
-        setInput("");
+        setInput((prev) => ({
+            ...prev,
+            content: ""
+        }));
     }
 
     return (
@@ -80,6 +83,7 @@ export default function PostComments({id, token}){
                 )}
                 <form onSubmit={submitComment}>
                     <input 
+                        value={input.content}
                         name='content'
                         type="text" 
                         placeholder='Leave a comment'
