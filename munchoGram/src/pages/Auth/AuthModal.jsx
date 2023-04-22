@@ -1,11 +1,18 @@
 import { useState } from 'react'
 import sleepyPanda from '../../../public/sleep.png'
+import { supabase } from '../../Client'
 import './AuthModal.css'
 
 export default function AuthModal({auth, setAuth}){
     const [createForm, setCreateForm] = useState({
         username: "",
-        password: ""
+        password: "",
+        email: ""
+    })
+
+    const [logInForm, setLogInForm] = useState({
+        email: "",
+        password: ""  
     })
 
     function handleChange(e){
@@ -14,9 +21,28 @@ export default function AuthModal({auth, setAuth}){
             [e.target.name]: e.target.value
         }))
     }
-    function createAccout(e){
+    async function createAccout(e){
         e.preventDefault();
-        console.log(createForm)
+
+        try {
+            const { data, error } = await supabase.auth.signUp(
+                {
+                  email: createForm.email,
+                  password: createForm.password,
+                  options: {
+                    data: {
+                      user_name: createForm.username,
+                    }
+                  }
+                }
+            ) 
+            if(error) throw error
+
+            alert("Check your email for verification link :)")   
+            
+        } catch (error) {
+            alert(error)
+        }
     }
     return (
         <>
@@ -26,8 +52,18 @@ export default function AuthModal({auth, setAuth}){
                     <form onSubmit={createAccout}>
                         <h2>Sign Up</h2>
                         <label>
+                            Email:
+                            <input 
+                                required
+                                type="text" 
+                                name="email" 
+                                onChange={handleChange}
+                            />
+                        </label>
+                        <label>
                             Username:
                             <input 
+                                required
                                 type="text" 
                                 name="username" 
                                 onChange={handleChange}
@@ -36,7 +72,8 @@ export default function AuthModal({auth, setAuth}){
                         <label>
                             Password:
                             <input 
-                                type="text" 
+                                required
+                                type="password" 
                                 name="password" 
                                 onChange={handleChange}
                             />
