@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import sleepyPanda from '../../../public/sleep.png'
 import { supabase } from '../../Client'
+import LogIn from './LogIn'
 import './AuthModal.css'
 
 export default function AuthModal({auth, setAuth}){
@@ -10,17 +11,13 @@ export default function AuthModal({auth, setAuth}){
         email: ""
     })
 
-    const [logInForm, setLogInForm] = useState({
-        email: "",
-        password: ""  
-    })
-
     function handleChange(e){
         setCreateForm((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value
         }))
     }
+    
     async function createAccout(e){
         e.preventDefault();
 
@@ -82,25 +79,7 @@ export default function AuthModal({auth, setAuth}){
                         <p>Already have an account? <span className='auth-link' onClick={() => setAuth(true)}>Log in</span></p>
                     </form>
                 :
-                    <form>
-                        <h2>Log in</h2>
-                        <label>
-                            Username:
-                            <input 
-                                type="text" 
-                                name="" 
-                            />
-                        </label>
-                        <label>
-                            Password:
-                            <input 
-                                type="text" 
-                                name="" 
-                            />
-                        </label>
-                        <button>Log in</button>
-                        <p>Don't have an account? <span className='auth-link' onClick={() => setAuth(false)}>Create one!</span></p>
-                    </form>
+                    <LogIn setAuth={setAuth}/>
                 }
                 
             </div>
