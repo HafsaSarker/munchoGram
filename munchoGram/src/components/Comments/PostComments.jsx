@@ -5,34 +5,39 @@ import { MdComment } from 'react-icons/md'
 import './PostComments.css'
 import { useState } from 'react'
 
-export default function PostComments({id}){
-    const [input, setInput] = useState("");
+export default function PostComments({id, token}){
+    const [input, setInput] = useState({user: "", content: ""});
     const [allComments, setAllComments] = useState(null);
 
     useState(() => {
         const fetchComments = async () => {
-            const {data} = await supabase
+            const {data,} = await supabase
                 .from('munchies')
                 .select()
                 .eq('id', id)
                 .single();
             
-                
-            setAllComments(data.comments)
+            const obj = (data.comments).map((item) => JSON.parse(item));
+            
+            setAllComments(obj)
         }
         fetchComments();
     }, [allComments]) 
 
-    
     const handleChange = (e) => {
-        setInput(e.target.value) 
+        setInput((prev) => ({
+            ...prev,
+            user: token.user.user_metadata.user_name,
+            [e.target.name]: e.target.value
+        })) 
     }
-
+    //console.log(allComments)
     const submitComment = async (e) => {
         e.preventDefault();
 
-        //make copy of array in order to avoid modification
-        var temp =[];
+        console.log(input)
+        // make copy of array in order to avoid modification
+        let temp =[];
         if(allComments){
             temp = allComments.slice();
             temp.push(input);
@@ -61,8 +66,7 @@ export default function PostComments({id}){
                 (allComments.map((item, index) => 
                     <CommentCard
                         key={index}
-                        commentContent = {item}
-                        id = {id}
+                        item={item}
                     />
                 )):
                 (
@@ -76,7 +80,7 @@ export default function PostComments({id}){
                 )}
                 <form onSubmit={submitComment}>
                     <input 
-                        value={input}
+                        name='content'
                         type="text" 
                         placeholder='Leave a comment'
                         onChange={handleChange}

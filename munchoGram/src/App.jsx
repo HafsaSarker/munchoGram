@@ -37,7 +37,7 @@ function App() {
           <Route path='/home' element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts} searchInput={searchInput} />}/>
           <Route path='/createPost' element={<CreatePost token={token}/>}/>
           <Route path='/editPost/:id' element={<UpdatePost allPosts={allPosts} />}/>
-          <Route path='/viewPost/:id' element={<ReadPost allPosts={allPosts}/>}/>
+          <Route path='/viewPost/:id' element={<ReadPost allPosts={allPosts} token={token} />}/>
           <Route path='/user/:uid' element={<UserAcc token={token}/>}/>
         </Route>
       </Routes>

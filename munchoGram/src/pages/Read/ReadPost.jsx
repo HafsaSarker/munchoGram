@@ -4,7 +4,7 @@ import PostComments from '../../components/Comments/PostComments';
 import { useParams } from 'react-router-dom';
 import './ReadPost.css'
 
-export default function ReadPost({allPosts}){
+export default function ReadPost({allPosts, token}){
     let {id} = useParams();
     let idNum = parseInt(id);
 
@@ -44,7 +44,7 @@ export default function ReadPost({allPosts}){
                         post_key={getPost.user_key}
                         />
 
-                        <PostComments id={id}/>
+                        <PostComments id={id} token={token} />
                     </div>
                  
                 </div>   

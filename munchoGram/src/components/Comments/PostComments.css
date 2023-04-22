@@ -30,3 +30,12 @@
     vertical-align:bottom;
     border: solid;
 }
+.delete-comment {
+    margin-left: 11px;
+    font-size: 10px;
+    background-color: hsl(211.86,80%,40%);
+    padding: 1px 4px;
+    border-radius: 8px;
+    color: #f1f0f0;
+    cursor: pointer;
+}
