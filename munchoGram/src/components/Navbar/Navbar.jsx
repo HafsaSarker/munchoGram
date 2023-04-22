@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import Search from "./search";
+import { MdAccountCircle } from 'react-icons/md'
 import './Navbar.css'
 
-export default function Navbar({setSearchInput, isLoggedIn}){
-
+export default function Navbar({setSearchInput, isLoggedIn, token}){
+    let uid = token && token.user.identities[0].id;
     return (
         <nav>
             <h1>munchoGram</h1>
-            { isLoggedIn && 
+            { token ? 
                 <>
                     <Search setSearchInput={setSearchInput} />
                     <ul>
@@ -17,9 +18,15 @@ export default function Navbar({setSearchInput, isLoggedIn}){
                         <Link to='/createPost'>
                             <li>Create New Post</li>
                         </Link>
-                        
+                        <Link to={'/user/' + uid}>
+                            <li><span className="user-icon"><MdAccountCircle /></span></li>
+                        </Link>
                     </ul>
-                </> 
+                </>
+                : 
+                <Link to="/">
+                    <button className="nav-btn">Sign Up/Log In</button> 
+                </Link>                
             }
             
         </nav>

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { supabase } from "../../Client";
 import { useNavigate } from "react-router-dom";
 
-export default function LogIn({setAuth, setIsLoggedIn, setToken}){
+export default function LogIn({setAuth, setToken, setIsLoggedIn}){
     const [logInForm, setLogInForm] = useState({
         email: "",
         password: ""  
@@ -29,6 +29,7 @@ export default function LogIn({setAuth, setIsLoggedIn, setToken}){
             navigate('/home')
             setToken(data)
             setIsLoggedIn(true)
+            
 
         } catch (error) {
           alert(error)
@@ -38,7 +39,7 @@ export default function LogIn({setAuth, setIsLoggedIn, setToken}){
         <form onSubmit={signIn}>
             <h2>Log in</h2>
             <label>
-                Username:
+                Email:
                 <input 
                     required
                     type="text" 

@@ -3,13 +3,21 @@ import eatingPanda from '../../../public/eat.png'
 import { supabase } from '../../Client';
 import './CreatePost.css'
 
-export default function CreatePost(){
+export default function CreatePost({token}){
+    // console.log(token)
+    // const [user, setUser] = useState(null);
+    // if(token){
+    //     setUser(token.user.user_metadata.user_name)
+    // }else{
+    //     setUser(Null)
+    // }
     const [newPost, setNewPost] = useState({
         title: "",
         content: null,
         url: null,
         user_key: null,
-        flag: "opinion"
+        flag: "opinion",
+        user_name: null
     });
     
     const handleChange = (e) => {
@@ -21,8 +29,11 @@ export default function CreatePost(){
 
     const createPost = async (e) => {
         e.preventDefault();
+
         const quesFlag = newPost.flag === "question" ? true : false;
-        console.log(quesFlag)
+        
+        const UsrName = token ? token.user.user_metadata.user_name : null;
+
         await supabase
             .from('munchies')
             .insert({
@@ -31,7 +42,8 @@ export default function CreatePost(){
                 imgUrl: newPost.url,
                 user_key: newPost.user_key,
                 flag: newPost.flag,
-                isQuestion: quesFlag
+                isQuestion: quesFlag,
+                user_name: UsrName
             })
             .select();
         alert('Post created!');        

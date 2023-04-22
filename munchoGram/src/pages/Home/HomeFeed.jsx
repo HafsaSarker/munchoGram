@@ -5,6 +5,7 @@ import panda from '../../../public/panda.png'
 import { supabase } from '../../Client';
 
 export default function HomeFeed({allPosts, setAllPosts, searchInput}){
+
     const[sort, setSort] = useState("created_at");
     let ascend = {};
 

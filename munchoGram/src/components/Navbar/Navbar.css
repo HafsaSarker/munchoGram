@@ -9,5 +9,23 @@ nav {
 
 nav > ul {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 25px;
+}
+
+.user-icon {
+    display: flex;
+    font-size: 25px;
+    padding: 0px;
+}
+.nav-btn{
+    background-color:#fff;
+    color: hsl(211.86,60%,45%);
+    border-radius: 15px;
+    transition: all .3s;
+}
+.nav-btn:hover {
+    background-color:#f1f1f1;
 }
