@@ -74,6 +74,7 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
                                     flag={post.flag}
                                     content={post.content}
                                     img={post.imgUrl}
+                                    user={post.user_name}
                                 />
                             )
                         }

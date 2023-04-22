@@ -16,6 +16,8 @@ export default function PostComments({id}){
                 .select()
                 .eq('id', id)
                 .single();
+            
+                
             setAllComments(data.comments)
         }
         fetchComments();

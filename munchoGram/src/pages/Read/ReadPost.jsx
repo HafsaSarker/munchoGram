@@ -20,6 +20,9 @@ export default function ReadPost({allPosts}){
                     <div className="post-container">
                         <div className="times">
                             <p>Posted {createdAgo}</p>
+
+                            {getPost.user_name ? <p className='user_name'>by {getPost.user_name}</p> : null} 
+
                             { getPost.edited ? (
                                 <p className='sub-time'>(edited) {edited_at}</p>
                             ):null

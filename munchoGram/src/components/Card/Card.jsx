@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import moment from 'moment';
 import { useState } from 'react';
 
-export default function Card({id,created,title, upvotes, edited, flag, content, img}) {
+export default function Card({id,created,title, upvotes, edited, flag, content, img, user}) {
     const [showCont, setShowCont] = useState(false);
     const createdAgo = moment(new Date(created)).fromNow();
     const edited_at = moment(new Date(edited)).fromNow();
@@ -13,8 +13,10 @@ export default function Card({id,created,title, upvotes, edited, flag, content, 
         <div className="card">
             <div className="times">
                 <p>Posted {createdAgo}</p>
+                {user ? <p className='user_name'>by {user}</p> : null} 
+
                 { edited ? (
-                    <p className='sub-time'>(edited) {edited_at}</p>
+                    <p className='edit-time'>(edited) {edited_at}</p>
                 ):null
                 }   
             </div>

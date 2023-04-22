@@ -19,11 +19,12 @@
 .times {
     display: flex;
     align-items: baseline;
-    gap: 10px;
+    gap: 4px;
 }
-.sub-time {
+.edit-time {
     font-size: 10px;
     font-weight: 600;
+    margin-left: 10px;
 }
 .p-link {
     display: flex;
@@ -55,4 +56,8 @@
     align-items: flex-start;
     justify-content: flex-start;
     background-color: hsl(210, 10%, 63%);
+}
+.user_name {
+    text-decoration: underline 1px ;
+    font-weight: bolder;
 }
