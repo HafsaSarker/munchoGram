@@ -6,7 +6,7 @@ import './PostComments.css'
 import { useState } from 'react'
 
 export default function PostComments({id, token}){
-    const [input, setInput] = useState({user: "", content: "", index: null});
+    const [input, setInput] = useState({user: "", content: "", id_: null});
     const [allComments, setAllComments] = useState(null);
 
     useState(() => {
@@ -25,11 +25,11 @@ export default function PostComments({id, token}){
     }, [allComments]) 
 
     const handleChange = (e) => {
-        let lastIndx = allComments[allComments.length - 1];
+        let lastID = allComments[allComments.length - 1];
 
         setInput((prev) => ({
             ...prev,
-            index: lastIndx.index + 1,
+            id_: lastID.id_ + 1,
             user: token.user.user_metadata.user_name,
 
             [e.target.name]: e.target.value
@@ -73,6 +73,9 @@ export default function PostComments({id, token}){
                     <CommentCard
                         key={index}
                         item={item}
+                        id={id}
+                        allComments={allComments}
+                        setAllComments={setAllComments}
                     />
                 )):
                 (

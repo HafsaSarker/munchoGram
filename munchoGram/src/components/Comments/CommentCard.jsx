@@ -2,15 +2,20 @@ import { BsArrowReturnRight } from 'react-icons/bs'
 import { supabase } from '../../Client'
 import './PostComments.css'
 
-export default function CommentCard({item}) {
-    const deleteComment = async(value) => {
-        // await supabase
-        //     .from('munchies')
-        //     .delete()
-        //     .eq('id', id);
-        // alert('Post deleted!');
-        // window.location='/home';
-        console.log(value)
+export default function CommentCard({item, id,allComments, setAllComments}) {
+    const deleteComment = async(id_) => {
+        const filter = allComments.filter((item) => item.id_ != id_)
+
+        setAllComments(filter)
+
+        //update database
+        await supabase
+        .from('munchies')
+        .update({ 
+            comments: [...filter]
+        })
+        .eq('id', id);
+
     }
 
     return (
@@ -21,7 +26,7 @@ export default function CommentCard({item}) {
                 </span>
                 <span className='bold'>{item.user}: </span>{item.content} 
                 
-                <button value={item.index} onClick={(e) => deleteComment(e.target.value)} className='delete-comment'>delete</button>
+                <button value={item.id_} onClick={(e) => deleteComment(e.target.value)} className='delete-comment'>delete</button>
             </p>
         </div>
         
