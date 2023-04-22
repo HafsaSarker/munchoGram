@@ -44,7 +44,7 @@ export default function ReadPost({allPosts, token}){
                         post_key={getPost.user_key}
                         />
 
-                        <PostComments id={id} token={token} />
+                        <PostComments id={id} token={token} post={getPost}/>
                     </div>
                  
                 </div>   
