@@ -6,7 +6,7 @@ import './PostComments.css'
 import { useState } from 'react'
 
 export default function PostComments({id, token}){
-    const [input, setInput] = useState({user: "", content: ""});
+    const [input, setInput] = useState({user: "", content: "", index: null});
     const [allComments, setAllComments] = useState(null);
 
     useState(() => {
@@ -25,17 +25,20 @@ export default function PostComments({id, token}){
     }, [allComments]) 
 
     const handleChange = (e) => {
+        let lastIndx = allComments[allComments.length - 1];
+
         setInput((prev) => ({
             ...prev,
+            index: lastIndx.index + 1,
             user: token.user.user_metadata.user_name,
+
             [e.target.name]: e.target.value
         })) 
     }
-    //console.log(allComments)
+
     const submitComment = async (e) => {
         e.preventDefault();
 
-        console.log(input)
         // make copy of array in order to avoid modification
         let temp =[];
         if(allComments){
