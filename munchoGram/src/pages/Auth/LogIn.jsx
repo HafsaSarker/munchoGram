@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { supabase } from "../../Client";
+import { useNavigate } from "react-router-dom";
 
-export default function LogIn({setAuth}){
+export default function LogIn({setAuth, setIsLoggedIn}){
     const [logInForm, setLogInForm] = useState({
         email: "",
         password: ""  
     })
+    let navigate = useNavigate();
 
     function handleChange(e){
         setLogInForm((prevState) => ({
@@ -24,7 +26,8 @@ export default function LogIn({setAuth}){
             })
     
             if (error) throw error
-            console.log(data)
+            navigate('/home')
+            setIsLoggedIn(true)
 
         } catch (error) {
           alert(error)

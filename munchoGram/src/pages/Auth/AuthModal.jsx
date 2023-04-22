@@ -4,7 +4,7 @@ import { supabase } from '../../Client'
 import LogIn from './LogIn'
 import './AuthModal.css'
 
-export default function AuthModal({auth, setAuth}){
+export default function AuthModal({auth, setAuth, setIsLoggedIn}){
     const [createForm, setCreateForm] = useState({
         username: "",
         password: "",
@@ -17,7 +17,7 @@ export default function AuthModal({auth, setAuth}){
             [e.target.name]: e.target.value
         }))
     }
-    
+
     async function createAccout(e){
         e.preventDefault();
 
@@ -79,7 +79,7 @@ export default function AuthModal({auth, setAuth}){
                         <p>Already have an account? <span className='auth-link' onClick={() => setAuth(true)}>Log in</span></p>
                     </form>
                 :
-                    <LogIn setAuth={setAuth}/>
+                    <LogIn setAuth={setAuth} setIsLoggedIn={setIsLoggedIn}/>
                 }
                 
             </div>
