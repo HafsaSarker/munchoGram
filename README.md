@@ -38,27 +38,25 @@ The following **additional** features are implemented:
 * [X] added user registration
 * [X] added user account page
 * [X] users can see when the post was last edited
+* [X] users can search by author as well as title of the post
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='.\munchoGram\public\munchoGram.gif' title='Video Walkthrough' width='1000' alt='Video Walkthrough' />
 
 <!-- Replace this with whatever GIF tool you used! -->
-GIF created with ...  
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+GIF created with ScreenToGif 
+
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+    While building this app, I struggled a lot with supabase as I am very new to databases and don't have much ideas on how to query data. Especially creating a user auth, I had to read a lot of documentation and watch videos on creating users and adding them to Supabase. I also struggled with how to update a database column that takes in an array of objects (for the comments). But I figured it out after playing around with it alot. 
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2023] [Hafsa Sarker]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
