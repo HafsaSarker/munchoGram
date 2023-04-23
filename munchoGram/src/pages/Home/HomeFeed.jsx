@@ -33,9 +33,8 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
 
     const filteredPosts = searchInput && 
         allPosts.filter(item =>
-        item.title
-        .toLowerCase()
-        .includes(searchInput)
+            item.title.toLowerCase().includes(searchInput) ||
+            item.user_name.toLowerCase().includes(searchInput)
     )
 
     return (
@@ -95,6 +94,7 @@ export default function HomeFeed({allPosts, setAllPosts, searchInput}){
                                     flag={post.flag}
                                     content={post.content}
                                     img={post.imgUrl}
+                                    user={post.user_name}
                                 />
                             )
                         }
