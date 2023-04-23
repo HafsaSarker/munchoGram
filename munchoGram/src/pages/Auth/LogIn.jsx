@@ -1,8 +1,11 @@
 import { useState } from "react"
+import { Link } from "react-router-dom";
 import { supabase } from "../../Client";
+import sleepyPanda from '../../../public/sleep.png'
 import { useNavigate } from "react-router-dom";
+import './LogIn.css'
 
-export default function LogIn({setAuth, setToken, setIsLoggedIn}){
+export default function LogIn({setToken}){
     const [logInForm, setLogInForm] = useState({
         email: "",
         password: ""  
@@ -28,36 +31,44 @@ export default function LogIn({setAuth, setToken, setIsLoggedIn}){
             if (error) throw error
             navigate('/home')
             setToken(data)
-            setIsLoggedIn(true)
             
-
         } catch (error) {
           alert(error)
         }
     }
     return (
-        <form onSubmit={signIn}>
-            <h2>Log in</h2>
-            <label>
-                Email:
-                <input 
-                    required
-                    type="text" 
-                    name="email" 
-                    onChange={handleChange}
-                />
-            </label>
-            <label>
-                Password:
-                <input 
-                    required
-                    type="password" 
-                    name="password" 
-                    onChange={handleChange}
-                />
-            </label>
-            <button>Log in</button>
-            <p>Don't have an account? <span className='auth-link' onClick={() => setAuth(false)}>Create one!</span></p>
-        </form>
+        <>
+            <img className='auth-img' src={sleepyPanda}/>
+            <div className="login">
+                <form onSubmit={signIn}>
+                    <h2>Log in</h2>
+                    <label>
+                        Email:
+                        <input 
+                            required
+                            type="text" 
+                            name="email" 
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <label>
+                        Password:
+                        <input 
+                            required
+                            type="password" 
+                            name="password" 
+                            onChange={handleChange}
+                        />
+                    </label>
+                    <button>Log in</button>
+                    <p>Don't have an account? 
+                        <Link to='/signup'>
+                            <span className='auth-link' >Create one!</span>
+                        </Link>   
+                    </p>
+                </form>
+            </div>
+        </>
+        
     )
 }

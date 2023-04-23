@@ -3,7 +3,7 @@ import Search from "./search";
 import { MdAccountCircle } from 'react-icons/md'
 import './Navbar.css'
 
-export default function Navbar({setSearchInput, isLoggedIn, token}){
+export default function Navbar({setSearchInput, token}){
     let uid = token && token.user.identities[0].id;
     return (
         <nav>

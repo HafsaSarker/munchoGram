@@ -2,7 +2,7 @@
     margin-top: 150px;
     width: 70px;
 }
-.auth-modal{
+.login{
     color:hsl(211.86,80%,40%);
     display: flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
     background-color: hsl(211.86,10%,80%);
     box-shadow: 1px 1px 5px hsl(213, 7%, 75%);
 }
-.auth-modal > form {
+.login > form {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -23,11 +23,11 @@
     align-items: center;
 }
 
-.auth-modal > form > label {
+.login > form > label {
     display: flex;
     flex-direction: column;
 }
-.auth-modal > form > label > input {
+.login > form > label > input {
     border-radius: 5px;
     border: 1px solid hsl(211.86,80%,40%);
     padding: 2px;
@@ -36,4 +36,5 @@
     border-bottom: 1px solid hsl(211.86,80%,40%);
     cursor: pointer;
     color: black;
+    margin-left: 4px;
 }

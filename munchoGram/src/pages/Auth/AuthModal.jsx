@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import { Link } from "react-router-dom";
 import sleepyPanda from '../../../public/sleep.png'
 import { supabase } from '../../Client'
-import LogIn from './LogIn'
 import './AuthModal.css'
 
-export default function AuthModal({auth, setAuth, setIsLoggedIn, setToken}){
+export default function AuthModal(){
     const [createForm, setCreateForm] = useState({
         username: "",
         password: "",
@@ -45,7 +45,6 @@ export default function AuthModal({auth, setAuth, setIsLoggedIn, setToken}){
         <>
             <img className='auth-img' src={sleepyPanda}/>
             <div className="auth-modal">
-                {!auth ? 
                     <form onSubmit={createAccout}>
                         <h2>Sign Up</h2>
                         <label>
@@ -76,12 +75,14 @@ export default function AuthModal({auth, setAuth, setIsLoggedIn, setToken}){
                             />
                         </label>
                         <button>Sign Up</button>
-                        <p>Already have an account? <span className='auth-link' onClick={() => setAuth(true)} >Log in</span></p>
+                        <p>Already have an account? 
+                            <Link to="/">
+                                <span className='auth-link'>Log in</span>
+                            </Link>
+                            
+                        </p>
                     </form>
-                :
-                    <LogIn setAuth={setAuth} setIsLoggedIn={setIsLoggedIn}
-                    setToken={setToken} />
-                }
+
                 
             </div>
         </>

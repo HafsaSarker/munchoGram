@@ -7,14 +7,13 @@ import CreatePost from './pages/Create/CreatePost';
 import Layout from './routes/Layout/Layout';
 import UpdatePost from './pages/Update/UpdatePost';
 import ReadPost from './pages/Read/ReadPost';
+import LogIn from './pages/Auth/LogIn';
 import UserAcc from './pages/User/UserAcc';
 import AuthModal from './pages/Auth/AuthModal';
 
 function App() {
   const [allPosts, setAllPosts] = useState(null);
   const [searchInput, setSearchInput] = useState("");
-  const [auth, setAuth] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(false)
 
   if(token){
@@ -31,9 +30,10 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Layout setSearchInput={setSearchInput} isLoggedIn={isLoggedIn} token={token}/>}>
-          <Route index element={<AuthModal auth={auth} setAuth={setAuth} setIsLoggedIn={setIsLoggedIn}
+        <Route path='/' element={<Layout setSearchInput={setSearchInput}  token={token}/>}>
+          <Route index element={<LogIn 
           setToken={setToken}/>}/>
+          <Route path='/signup' element={<AuthModal />} />
           <Route path='/home' element={<HomeFeed allPosts={allPosts} setAllPosts={setAllPosts} searchInput={searchInput} />}/>
           <Route path='/createPost' element={<CreatePost token={token}/>}/>
           <Route path='/editPost/:id' element={<UpdatePost allPosts={allPosts} />}/>
