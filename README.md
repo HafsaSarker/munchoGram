@@ -4,6 +4,8 @@ Submitted by: **Hafsa Sarker**
 
 This web app: **A forum for foodies that let's users sign up / log in. Then they can create, view, update and/ or delete posts. Users can interact with posts by upvoting a post or having discussions in the comments section. In the home feed, users can sort posts and read a summary of them.**
 
+Hosted at: https://munchogram.netlify.app/
+
 Time spent: **15+** hours spent in total
 
 ## Required Features
